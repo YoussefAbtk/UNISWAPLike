@@ -18,49 +18,35 @@ This constant can change only if we add or remove liquidity but in a swap it doe
 
 
 ### Swap - How many dy for dx?
+For a given amount dx of the token x the user will have an amount of token y dy to respect the constant K.
+In order to swap the constant must remain the same.
+(x+dx)(y-dy)=K
+(x+dx)(y-dy)= XY
+dy= ydx/x+dx
 
-
-
-**Uniswap trading fee = 0.3%**
 
 
 
 ### Add liquidity - How many dx, dy to add?
 
-
+To add liquidity the only constrain is the price the price should not change after adding liquidity.
+The price in a pool is given by this formula :
+P= X/Y
+we deduct that: 
+X/Y=dy/dx
 
 #### Add liquidity - How many shares to mint?
-
-
-
-Motivation:
-
-
-
-What is L0 and L1
-
-
-
-Simplify the equation:
-
-
-
-**Conclusion**
-
+s=Minted shares
+T= Total shares
+dx= the amount of token x added
+dy= the amount of token y added
+s=(dx/x)T= (dy/y)T
 
 
 ### Remove liquidity - How many tokens to withdraw?
 
-
-
-## Time Weighted Average Price
-
-
-
-### How do we compute the Time Weighted Average Price from Tk to Tn?
-
-
-
+dx= x*s/T
+dy= Y*s/T
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
