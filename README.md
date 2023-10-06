@@ -11,7 +11,7 @@ the pair contract also inherit from an ERC20 contract in order to allow liquidit
 
 ## What is a constant product AMM ?
 
-A constant product AMM means that the product of the reserves of the two tokkens X and Y equal a constant K.
+A constant product AMM is a protoco to exchange tokens where the product of the reserves of the two tokkens X and Y equal a constant K.
 X\*Y=K
 This constant can change only if we add or remove liquidity but in a swap it doesn't change.
 
