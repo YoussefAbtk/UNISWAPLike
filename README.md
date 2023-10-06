@@ -15,57 +15,39 @@ A constant product AMM means that the product of the reserves of the two tokkens
 X\*Y=K
 This constant can change only if we add or remove liquidity but in a swap it doesn't change.
 
-<div>
- <img src="images/Maths01.png" alt="Maths">
-</div>
+
 
 ### Swap - How many dy for dx?
 
-<div>
- <img src="images/Maths02.png" alt="Maths">
-</div>
+
 
 **Uniswap trading fee = 0.3%**
 
-<div>
- <img src="images/Mathsfee.png" alt="Maths">
-</div>
+
 
 ### Add liquidity - How many dx, dy to add?
 
-<div>
- <img src="images/Maths03.png" alt="Maths">
-</div>
+
 
 #### Add liquidity - How many shares to mint?
 
-<div>
- <img src="images/Maths04bis.png" alt="Maths">
-</div>
+
 
 Motivation:
 
-<div>
- <img src="images/Maths05.png" alt="Maths">
-</div>
+
 
 What is L0 and L1
 
-<div>
- <img src="images/Maths06bis.png" alt="Maths">
-</div>
+
 
 Simplify the equation:
 
-<div>
- <img src="images/Maths07.png" alt="Maths">
-</div>
+
 
 **Conclusion**
 
-<div>
- <img src="images/Maths08.png" alt="Maths">
-</div>
+
 
 ### Remove liquidity - How many tokens to withdraw?
 
