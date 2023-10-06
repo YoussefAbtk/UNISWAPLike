@@ -51,23 +51,15 @@ Simplify the equation:
 
 ### Remove liquidity - How many tokens to withdraw?
 
-<div>
- <img src="images/Maths09bis.png" alt="Maths">
-</div>
+
 
 ## Time Weighted Average Price
 
-<div>
- <img src="images/Maths10.png" alt="Maths">
-</div>
+
 
 ### How do we compute the Time Weighted Average Price from Tk to Tn?
 
-<div>
- <img src="images/Maths11.png" alt="Maths">
-</div>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing
 
