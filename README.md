@@ -100,8 +100,5 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Contact
 
-Reda Aboutika - [@twitter](https://twitter.com/AboutikaY32214) - Aboutika.youssef@hotmail.com
 
-Project Link: [https://github.com/YoussefAbtk/UtopiaCPAMM](https://github.com/YoussefAbtk/UtopiaCPAMM)
