@@ -25,7 +25,8 @@ contract UtopiaFactory is IUtopiaFactory {
     function allPairsLength() external view returns (uint256) {
         return allPairs.length;
     }
-// It's with this function that the factory create a pair contract.
+    // It's with this function that the factory create a pair contract.
+
     function createPair(address tokenA, address tokenB) external returns (address) {
         if (tokenA == tokenB) {
             revert Not_Same_Address();
@@ -62,5 +63,9 @@ contract UtopiaFactory is IUtopiaFactory {
             revert Forbidden();
         }
         feeToSetter = _feeToSetter;
+    }
+
+    function getFeeTo() external view returns (address _feeTo) {
+        return _feeTo = feeTo;
     }
 }

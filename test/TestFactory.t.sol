@@ -12,6 +12,7 @@ contract TestFactory is Test {
     ERC20Mock mockToken0;
     ERC20Mock mockToken1;
     UtopiaFactory factory;
+    address OWNER = makeAddr("owner");
 
     event PairCreated(address indexed pair, address indexed token0, address indexed token1);
 
@@ -53,7 +54,20 @@ contract TestFactory is Test {
         vm.expectEmit();
         factory.createPair(address(mockToken0), address(mockToken1));
     }
-// this function is for computing an address before deploy it using create2.
+    // this function is for computing an address before deploy it using create2.
+
+    function testsetFeeToRevertIfNotFeeToSetter() external {
+        vm.expectRevert(UtopiaFactory.Forbidden.selector);
+        vm.prank(OWNER);
+        factory.setFeeTo(address(0));
+    }
+
+    function testsetFeeToSUpdateFeeTo() external {
+        factory.setFeeTo(OWNER);
+        address feeTo = factory.getFeeTo();
+        assertEq(OWNER, feeTo);
+    }
+
     function computeAddress(bytes32 salt, bytes32 bytecodeHash, address deployer)
         internal
         pure
