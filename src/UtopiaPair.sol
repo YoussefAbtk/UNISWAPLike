@@ -152,7 +152,7 @@ contract UtopiaPair is IUtopiaPair, IERC20, UtopiaCoin, ReentrancyGuard {
         //After that we compute the Amount in.
         unchecked {
             amount0In = balance0 > _reserve0 - amount0Out ? balance0 - (_reserve0 - amount0Out) : 0;
-            amount1In = balance1 > _reserve0 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
+            amount1In = balance1 > _reserve1 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
         }
         {
             if (amount0In <= 0 && amount1In <= 0) revert();
