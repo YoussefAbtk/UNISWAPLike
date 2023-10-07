@@ -42,6 +42,27 @@ contract TestUtopiaPair is Test {
         pair.swap(50, 80, address(this));
     }
 
+    function testSwapRevertIfTokenAddress() external {
+        vm.startPrank(USER);
+        IERC20(mockToken0).transfer(address(pair), 10 ether);
+        IERC20(mockToken1).transfer(address(pair), 10 ether);
+        pair.mint(USER);
+        vm.stopPrank();
+        vm.expectRevert();
+        pair.swap(0, 0, address(mockToken0));
+    }
+
+    function testSwapRevertIfKIsCompromised() external {
+        vm.startPrank(USER);
+        IERC20(mockToken0).transfer(address(pair), 10 ether);
+        IERC20(mockToken1).transfer(address(pair), 10 ether);
+        pair.mint(USER);
+        IERC20(mockToken0).transfer(address(pair), 10 ether);
+        IERC20(mockToken1).transfer(address(pair), 10 ether);
+        pair.swap(0, 1 ether, USER);
+        vm.stopPrank();
+    }
+
     modifier userMint() {
         vm.startPrank(USER);
         IERC20(mockToken0).transfer(address(pair), 10 ether);

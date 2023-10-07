@@ -150,13 +150,15 @@ contract UtopiaPair is IUtopiaPair, IERC20, UtopiaCoin, ReentrancyGuard {
             balance1 = IERC20(_token1).balanceOf(address(this));
         }
         //After that we compute the Amount in.
-        amount0In = balance0 > _reserve0 - amount0Out ? balance0 - (_reserve0 - amount0Out) : 0;
-        amount1In = balance1 > _reserve0 - amount0Out ? balance0 - (_reserve0 - amount0Out) : 0;
+        unchecked {
+            amount0In = balance0 > _reserve0 - amount0Out ? balance0 - (_reserve0 - amount0Out) : 0;
+            amount1In = balance1 > _reserve0 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
+        }
         {
             if (amount0In <= 0 && amount1In <= 0) revert();
             uint256 balance0Adjusted = (balance0 * 1000) - amount0In * 3;
             uint256 balance1Adjusted = (balance1 * 1000) - amount1In * 3;
-            if (balance0Adjusted * balance1Adjusted != _reserve0 * _reserve1 * 1000 ^ 2) {
+            if (balance0Adjusted * balance1Adjusted != uint256(_reserve0) * _reserve1 * 1000 ^ 2) {
                 revert();
             }
         }
@@ -185,13 +187,13 @@ contract UtopiaPair is IUtopiaPair, IERC20, UtopiaCoin, ReentrancyGuard {
     }
 
     function _update(uint256 balance0, uint256 balance1, uint112 _reserve0, uint112 _reserve1) private {
-        uint256 _blockTimestamp = uint32(block.timestamp % 2 ** 32);
+        uint32 _blockTimestamp = uint32(block.timestamp % 2 ** 32);
         unchecked {
-            uint256 interval = _blockTimestamp - blockTimestampLast;
+            uint32 interval = _blockTimestamp - blockTimestampLast;
 
             if (interval > 0 && _reserve0 != 0 && _reserve1 != 0) {
-                price0cumulative += (uint224(_reserve0) / uint224(_reserve1)) * interval;
-                price1cumulative += (uint224(_reserve1) / uint224(_reserve0)) * interval;
+                price0cumulative += ((uint224(_reserve0) * 2 ** 112) / uint224(_reserve1)) * interval;
+                price1cumulative += ((uint224(_reserve1) * 2 ** 112) / uint224(_reserve0)) * interval;
             }
         }
 
